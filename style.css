@@ -107,6 +107,7 @@
   padding: 25px;
   animation: shadow_card 6s infinite alternate;
   position: relative;
+  overflow: hidden;
 }
 
 .image {
@@ -269,14 +270,7 @@
 }
 
 .container_single .card_single_creation .name_hero_creation {
-  background: linear-gradient(
-    45deg,
-    rgb(0, 255, 0),
-    cyan,
-    rgb(255, 0, 200),
-    blue,
-    rgb(183, 0, 255)
-  );
+  background: linear-gradient(45deg, rgb(0, 255, 0), cyan, rgb(255, 0, 200), blue, rgb(183, 0, 255));
   background-size: 200%;
   animation: background 10s alternate infinite;
   width: 100%;
@@ -286,21 +280,13 @@
   font-weight: 700;
   border-radius: 20px;
 }
-.counter {
-  border: 1px solid black !important
-  ;
+.container_single .card_single_creation .name_hero_creation .counter {
+  border: 1px solid black;
   font-size: 12px;
 }
 
 .short_description_creation {
-  background: linear-gradient(
-    45deg,
-    rgb(0, 255, 0),
-    cyan,
-    rgb(255, 0, 200),
-    blue,
-    rgb(183, 0, 255)
-  );
+  background: linear-gradient(45deg, rgb(0, 255, 0), cyan, rgb(255, 0, 200), blue, rgb(183, 0, 255));
   background-size: 200%;
   animation: background 10s alternate infinite;
   color: black;
@@ -311,14 +297,7 @@
 }
 
 .description_creation {
-  background: linear-gradient(
-    45deg,
-    rgb(0, 255, 0),
-    cyan,
-    rgb(255, 0, 200),
-    blue,
-    rgb(183, 0, 255)
-  );
+  background: linear-gradient(45deg, rgb(0, 255, 0), cyan, rgb(255, 0, 200), blue, rgb(183, 0, 255));
   background-size: 200%;
   animation: background 10s alternate infinite;
   color: black;
@@ -376,17 +355,7 @@ label {
 }
 
 .name_hero_update {
-  background: linear-gradient(
-    45deg,
-    rgb(0, 255, 0),
-    cyan,
-    rgb(255, 0, 200),
-    yellow,
-    blue,
-    rgb(183, 0, 255),
-    rgb(0, 255, 0),
-    cyan
-  );
+  background: linear-gradient(45deg, rgb(0, 255, 0), cyan, rgb(255, 0, 200), yellow, blue, rgb(183, 0, 255), rgb(0, 255, 0), cyan);
   background-size: 200%;
   animation: background 5s alternate infinite;
   width: 100%;
@@ -398,17 +367,7 @@ label {
 }
 
 .short_description_update {
-  background: linear-gradient(
-    45deg,
-    rgb(0, 255, 0),
-    cyan,
-    rgb(255, 0, 200),
-    yellow,
-    blue,
-    rgb(183, 0, 255),
-    rgb(0, 255, 0),
-    cyan
-  );
+  background: linear-gradient(45deg, rgb(0, 255, 0), cyan, rgb(255, 0, 200), yellow, blue, rgb(183, 0, 255), rgb(0, 255, 0), cyan);
   background-size: 200%;
   animation: background 5s alternate infinite;
   width: 100%;
@@ -419,17 +378,7 @@ label {
 }
 
 .description_update {
-  background: linear-gradient(
-    45deg,
-    rgb(0, 255, 0),
-    cyan,
-    rgb(255, 0, 200),
-    yellow,
-    blue,
-    rgb(183, 0, 255),
-    rgb(0, 255, 0),
-    cyan
-  );
+  background: linear-gradient(45deg, rgb(0, 255, 0), cyan, rgb(255, 0, 200), yellow, blue, rgb(183, 0, 255), rgb(0, 255, 0), cyan);
   background-size: 200%;
   animation: background 5s alternate infinite;
   width: 100%;
@@ -520,4 +469,6 @@ body {
     font-size: 5px !important;
     padding: 5px 10px;
   }
-} /*# sourceMappingURL=style.css.map */
+}
+
+/*# sourceMappingURL=style.css.map */

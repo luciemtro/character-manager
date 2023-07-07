@@ -1,58 +1,75 @@
+// Sélection des éléments du DOM
 const container_cards = document.querySelector(".container");
 const search = document.querySelector("#site-search");
 
-fetch("https://character-database.becode.xyz/characters")
-    .then(response => response.json())
-    .then(cards => {
-        const originalCards = cards; // Conservez une copie des cartes originales
-        // Fonction de filtrage basée sur le nom du héros
-        const filterCards = searchTerm => {
-            const filteredCards = originalCards.filter(hero =>
-                hero.name.toLowerCase().includes(searchTerm.toLowerCase())
-            );
-            // Supprimer les cartes existantes du conteneur
-            while (container_cards.firstChild) {
-                container_cards.removeChild(container_cards.firstChild);
-            }
+// Tableau pour stocker les cartes originales
+let originalCards = [];
 
-            // Ajouter les nouvelles cartes filtrées au conteneur
-            for (const hero of filteredCards) {
-                const div_card = document.createElement("div");
-                container_cards.appendChild(div_card);
-                const image = document.createElement("img");
-                image.src = 'data:image/gif;base64,' + hero.image;
-                image.classList.add("image");
-                const nameHero = document.createElement("div");
-                const description = document.createElement("p");
-                div_card.appendChild(image);
-                div_card.appendChild(nameHero);
-                div_card.appendChild(description);
-                div_card.classList.add('card');
-                nameHero.classList.add("name_hero");
-                description.classList.add("description");
-                nameHero.innerText = hero.name;
-                description.innerText = hero.description;
-                const see = document.createElement("a");
-                see.innerText = 'See Character';
-                see.classList.add("see");
-                div_card.appendChild(see);
-                see.href = "pages/single.html?id=" + hero['id'];
-            }
-        };
+// Fonction pour effectuer la requête et obtenir les données des cartes
+function fetchCardsData() {
+  return fetch("https://character-database.becode.xyz/characters")
+    .then(response => response.json());
+}
 
-        // Événement d'écoute sur l'entrée dans le champ de recherche
-        search.addEventListener("input", event => {
-            const searchTerm = event.target.value;
-            filterCards(searchTerm);
-        });
+// Fonction de filtrage des cartes en fonction du terme de recherche
+function filterCards(searchTerm) {
+  const filteredCards = originalCards.filter(hero =>
+    hero.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
-        // Afficher toutes les cartes initiales au chargement de la page
-        filterCards("");
-    });
+  // Supprimer les cartes existantes du conteneur
+  container_cards.innerHTML = "";
 
+  // Ajouter les nouvelles cartes filtrées au conteneur
+  filteredCards.forEach(hero => {
+    const div_card = createCardElement(hero);
+    container_cards.appendChild(div_card);
+  });
+}
 
+// Fonction pour créer un élément de carte à partir des données d'un héros
+function createCardElement(hero) {
+  const div_card = document.createElement("div");
+  div_card.classList.add('card');
 
+  const image = document.createElement("img");
+  image.classList.add("image");
+  image.src = `data:image/gif;base64,${hero.image}`;
 
-    
+  const nameHero = document.createElement("div");
+  nameHero.classList.add("name_hero");
+  nameHero.innerText = hero.name;
 
+  const description = document.createElement("p");
+  description.classList.add("description");
+  description.innerText = hero.description;
 
+  const see = document.createElement("a");
+  see.classList.add("see");
+  see.innerText = 'See Character';
+  see.href = `../pages/single.html?id=${hero.id}`;
+
+  div_card.append(image, nameHero, description, see);
+  return div_card;
+}
+
+// Fonction pour gérer l'événement d'entrée dans le champ de recherche
+function handleSearchInput(event) {
+  const searchTerm = event.target.value;
+  filterCards(searchTerm);
+}
+
+// Écoute de l'événement d'entrée dans le champ de recherche
+search.addEventListener("input", handleSearchInput);
+
+// Fonction pour afficher toutes les cartes initiales au chargement de la page
+function displayAllCards() {
+  filterCards("");
+}
+
+// Appel de la fonction pour récupérer les données des cartes et afficher toutes les cartes initiales
+fetchCardsData()
+  .then(cards => {
+    originalCards = cards;
+    displayAllCards();
+  });
