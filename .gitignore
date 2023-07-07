@@ -1,1 +1,5 @@
 node_modules
+ config.js // To hide any confidential keys
+ .idea // Depending on your IDE
+ .vscode // Depending on your IDE
+ .DS_Store // OS specific files (this one if for Mac)

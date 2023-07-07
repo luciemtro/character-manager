@@ -6,9 +6,9 @@ export default {
         rollupOptions: {
             input: {
                 main: resolve(__dirname, 'index.html'),
-                single: resolve(__dirname, 'single.html'),
-                creation: resolve(__dirname, 'creation.html'),
-                update: resolve(__dirname, 'update.html')            
+                creation: resolve(__dirname, 'pages/creation.html'),
+                update: resolve(__dirname, 'pages/update.html'),  
+                single: resolve(__dirname, 'pages/single.html'),     
             }
         }
     }
